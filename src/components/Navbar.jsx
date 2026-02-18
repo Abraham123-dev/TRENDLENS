@@ -61,7 +61,7 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <NavLink href="#problem">Features</NavLink>
+            <NavLink href="#problem">The Problem</NavLink>
             <NavLink href="#how-it-works">How it Works</NavLink>
             <NavLink href="#benefits">Benefits</NavLink>
             <NavLink href="/support">Support</NavLink>
