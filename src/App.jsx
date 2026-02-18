@@ -1,11 +1,17 @@
 import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
+import { Home } from './components/Home';
+import { SignIn } from './components/SignIn';
+import { Waitlist } from './components/Waitlist';
+import { Support } from './components/Support';
 
 const Layout = ({ children }) => {
   const location = useLocation();
   
   return (
-    <div className="min-h-screen bg-background text-text-main selection:bg-accent-blue selection:text-white overflow-x-hidden flex flex-col">
+    <div className="min-h-screen bg-[#020408] text-[#F2F4F7] selection:bg-[#2E90FA] selection:text-white overflow-x-hidden flex flex-col">
       <Navbar />
       <main className="flex-grow">
         {children}

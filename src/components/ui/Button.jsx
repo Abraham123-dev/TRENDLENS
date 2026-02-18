@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../../../utils.js/cn';
+import { cn } from '../../../lib/cn';
 import { motion } from 'framer-motion';
 
 export const Button = ({ 
@@ -12,7 +12,7 @@ export const Button = ({
   
   const variants = {
     primary: "bg-[#0055FF] hover:bg-[#0044CC] text-white shadow-[0_0_20px_-5px_rgba(0,85,255,0.4)] border border-transparent",
-    secondary: "bg-surfaceHighlight text-white hover:bg-surfaceHighlight/80 border border-white/5",
+    secondary: "bg-surface-highlight text-white hover:bg-surface-highlight/80 border border-white/5",
     outline: "bg-transparent text-white border border-white/20 hover:bg-white/5",
     ghost: "bg-transparent text-slate-400 hover:text-white hover:bg-white/5",
   };
