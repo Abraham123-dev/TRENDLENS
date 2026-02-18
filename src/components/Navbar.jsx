@@ -103,7 +103,7 @@ export const Navbar = () => {
             <div className="px-6 py-8 space-y-6 flex flex-col">
               <div className="space-y-4 border-b border-white/5 pb-6">
                 <a href="/#problem" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between text-sm font-bold tracking-widest text-slate-300 hover:text-white uppercase py-2">
-                  Features <ChevronRight className="w-4 h-4" />
+                  The Problem <ChevronRight className="w-4 h-4" />
                 </a>
                 <a href="/#how-it-works" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between text-sm font-bold tracking-widest text-slate-300 hover:text-white uppercase py-2">
                   How it Works <ChevronRight className="w-4 h-4" />

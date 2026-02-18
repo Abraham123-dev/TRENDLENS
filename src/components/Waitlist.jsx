@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/Button';
+import { useToast } from './ui/Toast';
 
 export const Waitlist = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const { showToast } = useToast();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    // Simulate registration process
+    setTimeout(() => {
+      setIsLoading(false);
+      showToast('APPLICATION RECEIVED. WELCOME TO THE REGISTRY.');
+    }, 2500);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center pt-20 px-4">
       <div className="absolute inset-0 cyber-grid opacity-10 pointer-events-none"></div>
@@ -25,34 +40,41 @@ export const Waitlist = () => {
             We are onboarding operators in cohorts to maintain data precision. Register your interest to be notified when a slot opens.
           </p>
           
-          <form className="grid sm:grid-cols-2 gap-6 mb-10">
+          <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-6 mb-10">
             <div className="sm:col-span-2">
-              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Full name</label>
+              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 px-1">Full name</label>
               <input 
+                required
                 type="text" 
                 className="w-full bg-[#050912] border border-white/5 rounded-lg px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-accent-blue/50 transition-colors"
                 placeholder="John Doe"
               />
             </div>
             <div>
-              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Work Email</label>
+              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 px-1">Work Email</label>
               <input 
+                required
                 type="email" 
                 className="w-full bg-[#050912] border border-white/5 rounded-lg px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-accent-blue/50 transition-colors"
                 placeholder="john@company.com"
               />
             </div>
             <div>
-              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Company / Role</label>
+              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 px-1">Company / Role</label>
               <input 
+                required
                 type="text" 
                 className="w-full bg-[#050912] border border-white/5 rounded-lg px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-accent-blue/50 transition-colors"
                 placeholder="Founder / Growth"
               />
             </div>
             <div className="sm:col-span-2">
-              <Button variant="primary" className="w-full py-4 uppercase tracking-widest text-xs font-bold">
-                Submit Application
+              <Button 
+                variant="primary" 
+                className="w-full py-4 uppercase tracking-widest text-xs font-bold"
+                disabled={isLoading}
+              >
+                {isLoading ? 'TRANSMITTING DATA...' : 'Submit Application'}
               </Button>
             </div>
           </form>

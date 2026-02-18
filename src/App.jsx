@@ -7,6 +7,9 @@ import { SignIn } from './components/SignIn';
 import { Waitlist } from './components/Waitlist';
 import { Support } from './components/Support';
 
+import { ToastProvider } from './components/ui/Toast';
+import { FeedbackWidget } from './components/FeedbackWidget';
+
 const Layout = ({ children }) => {
   const location = useLocation();
   
@@ -17,20 +20,23 @@ const Layout = ({ children }) => {
         {children}
       </main>
       <Footer />
+      <FeedbackWidget />
     </div>
   );
 };
 
 function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/waitlist" element={<Waitlist />} />
-        <Route path="/support" element={<Support />} />
-      </Routes>
-    </Layout>
+    <ToastProvider>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/waitlist" element={<Waitlist />} />
+          <Route path="/support" element={<Support />} />
+        </Routes>
+      </Layout>
+    </ToastProvider>
   );
 }
 
