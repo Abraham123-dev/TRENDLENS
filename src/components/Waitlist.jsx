@@ -14,7 +14,7 @@ export const Waitlist = () => {
     // Simulate registration process
     setTimeout(() => {
       setIsLoading(false);
-      showToast('APPLICATION RECEIVED. WELCOME TO THE REGISTRY.');
+      showToast('APPLICATION RECEIVED. WE WILL UPDATE YOU VIA EMAIL.');
     }, 2500);
   };
 
