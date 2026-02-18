@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/Button';
+import { useToast } from './ui/Toast';
 
 export const SignIn = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const { showToast } = useToast();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    // Simulate authentication process
+    setTimeout(() => {
+      setIsLoading(false);
+      showToast('ACCESS GRANTED. INITIALIZING TERMINAL.');
+    }, 2000);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center pt-20 px-4">
       <div className="absolute inset-0 cyber-grid opacity-10 pointer-events-none"></div>
@@ -16,10 +31,11 @@ export const SignIn = () => {
           <p className="text-slate-400 text-sm font-medium">Enter your credentials to access the terminal.</p>
         </div>
         
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 px-1">Email Address</label>
             <input 
+              required
               type="email" 
               className="w-full bg-[#050912] border border-white/5 rounded-lg px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-accent-blue/50 transition-colors"
               placeholder="operator@trendlens.com"
@@ -28,13 +44,18 @@ export const SignIn = () => {
           <div>
             <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 px-1">Password</label>
             <input 
+              required
               type="password" 
               className="w-full bg-[#050912] border border-white/5 rounded-lg px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-accent-blue/50 transition-colors"
               placeholder="••••••••"
             />
           </div>
-          <Button variant="primary" className="w-full py-4 uppercase tracking-widest text-xs font-bold">
-            Initialize Session
+          <Button 
+            variant="primary" 
+            className="w-full py-4 uppercase tracking-widest text-xs font-bold"
+            disabled={isLoading}
+          >
+            {isLoading ? 'ESTABLISHING CONNECTION...' : 'Initialize Session'}
           </Button>
         </form>
         

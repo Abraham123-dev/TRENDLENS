@@ -99,13 +99,7 @@ export const Hero = () => {
                 </div>
               </div>
               
-              {/* Feedback Button Overlay */}
-              <div className="absolute bottom-6 right-6">
-                <button className="flex items-center gap-2 bg-[#5B45FF] hover:bg-[#4A35EE] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors">
-                  <MessageSquare className="w-4 h-4" />
-                  Feedback
-                </button>
-              </div>
+      
             </div>
           </motion.div>
 
